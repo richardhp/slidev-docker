@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  slideshow:
+    build: .
+    volumes:
+      - ./slides:/tmp/slides
+    ports:
+      - 7000:3030
+    environment:
+      - TITLE=Monadt
