@@ -2,9 +2,7 @@ version: '3'
 
 services:
   build_slideshow:
-    build: 
-      context: .
-      dockerfile: build.Dockerfile
+    build: .
     volumes:
       - ./slides:/tmp/slides
       - ./dist:/slidev/dist
