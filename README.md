@@ -43,3 +43,15 @@ docker-compose up serve_slideshow
 ```
 
 and nginx will serve it on port 7000 (or whatever you set in your docker-compose file).
+
+## Deployinh
+
+You can just create a simple nginx based Dockerfile, and copy the dist folder to the /usr/share/nginx/html folder, something like this:
+
+```Dockerfile
+FROM nginx:1.23.1-alpine
+
+COPY ./dist /usr/share/nginx/html
+```
+
+Then build and push that image and it will just serve up your presentation wherever it's deployed.  You can then stick that behind a reverse proxy, or into your kubernetes stack or whatever and your presentation is live!
