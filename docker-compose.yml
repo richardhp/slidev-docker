@@ -1,11 +1,19 @@
 version: '3'
 
 services:
-  slideshow:
-    build: .
+  build_slideshow:
+    build: 
+      context: .
+      dockerfile: build.Dockerfile
     volumes:
       - ./slides:/tmp/slides
-    ports:
-      - 7000:3030
+      - ./dist:/slidev/dist
     environment:
       - TITLE=Monadt
+
+  serve_slideshow:
+    image: nginx:1.23.1-alpine
+    volumes:
+      - ./dist:/usr/share/nginx/html
+    ports:
+      - 7000:80
